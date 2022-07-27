@@ -1,13 +1,73 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.small-only {
+  display: inherit;
+}
+.not-medium {
+  display: inherit;
+}
+.not-large {
+  display: inherit;
+}
+.not-small {
+  display: none;
+}
+.medium-only {
+  display: none;
+}
+.large-only {
+  display: none;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@media (min-width: 768px) {
+  .small-only {
+    display: none;
+  }
+  .medium-only {
+    display: inherit;
+  }
+  .large-only {
+    display: none;
+  }
+  .not-small {
+    display: inherit;
+  }
+  .not-medium {
+    display: none;
+  }
+  .not-large {
+    display: inherit;
+  }
+}
+@media (min-width: 992px) {
+  .small-only {
+    display: none;
+  }
+  .medium-only {
+    display: none;
+  }
+  .large-only {
+    display: inherit;
+  }
+  .not-small {
+    display: inherit;
+  }
+  .not-medium {
+    display: inherit;
+  }
+  .not-large {
+    display: none;
+  }
+}
+
+:root div {
+  color: red !important;
+}
+
+
+/* Because of Grommet I had to use CSS specificity to force media queries. 
+In order to add media queries, add a span around the buttons in the nav bar */
+@media screen and (max-width: 992px) {
+    header span button  {
+    /* color: blue !important; */
+    display: none !important;
+  }
 }
