@@ -1,65 +1,52 @@
-.small-only {
-  display: inherit;
-}
-.not-medium {
-  display: inherit;
-}
-.not-large {
-  display: inherit;
-}
-.not-small {
-  display: none;
-}
-.medium-only {
-  display: none;
-}
-.large-only {
+.sm-hidden{
   display: none;
 }
 
+.md-hidden{}
+
+.xl-hidden{}
+
+.md-visible{
+  display: none;
+}
+.lg-visible{
+  display: none;
+}
+.xl-visible{
+  display: none;
+}
+
+
+
+
+
 @media (min-width: 768px) {
-  .small-only {
+  .md-hidden{
     display: none;
   }
-  .medium-only {
-    display: inherit;
-  }
-  .large-only {
-    display: none;
-  }
-  .not-small {
-    display: inherit;
-  }
-  .not-medium {
-    display: none;
-  }
-  .not-large {
+  .md-visible{
     display: inherit;
   }
 }
 @media (min-width: 992px) {
-  .small-only {
+  .lg-hidden{
     display: none;
   }
-  .medium-only {
+  .lg-visible{
+    display: inherit;
+  }
+}
+@media (min-width: 1100px) {
+  .xl-hidden{
     display: none;
   }
-  .large-only {
+  .xl-visible{
     display: inherit;
-  }
-  .not-small {
-    display: inherit;
-  }
-  .not-medium {
-    display: inherit;
-  }
-  .not-large {
-    display: none;
   }
 }
 
 :root div {
-  color: red !important;
+  color: red;
 }
 
 
@@ -67,7 +54,7 @@
 In order to add media queries, add a span around the buttons in the nav bar */
 @media screen and (max-width: 992px) {
     header span button  {
-    /* color: blue !important; */
-    display: none !important;
+    /* color: blue; */
+    display: none;
   }
 }
