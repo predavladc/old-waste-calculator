@@ -2,41 +2,80 @@ import { createContext, useState, useEffect } from "react";
 
 export const CalcContext = createContext();
 const CalcProvider = ({ children }) => {
+  const [profile, setProfile] = useState();
+
+  const [electricityFormInfo, setElectricityFormInfo] = useState(
+    localStorage.getItem("electricityFormInfo")
+      ? JSON.parse(localStorage.getItem("electricityFormInfo"))
+      : {
+          airconNo: 25,
+          airconPower: 2000,
+        }
+  );
+  // const [electricityFormInfo, setElectricityFormInfo] = useState(
+  //   localStorage.getItem("electricityFormInfo")
+  //     ? JSON.parse(localStorage.getItem("electricityFormInfo"))
+  //     : {
+  //         airconNo: 25,
+  //         airconPower: 2000,
+  //       }
+  // );
+  // const [electricityFormInfo, setElectricityFormInfo] = useState(
+  //   localStorage.getItem("electricityFormInfo")
+  //     ? JSON.parse(localStorage.getItem("electricityFormInfo"))
+  //     : {
+  //         airconNo: 25,
+  //         airconPower: 2000,
+  //       }
+  // );
+  // const [electricityFormInfo, setElectricityFormInfo] = useState(
+  //   localStorage.getItem("electricityFormInfo")
+  //     ? JSON.parse(localStorage.getItem("electricityFormInfo"))
+  //     : {
+  //         airconNo: 25,
+  //         airconPower: 2000,
+  //       }
+  // );
+
+  //Stores all calculation results in the profile
+  useEffect(() => {
+    localStorage.setItem(
+      `profile`,
+      JSON.stringify({
+        electricityFormInfo,
+        // electricityFormInfo,
+        // electricityFormInfo,
+        // electricityFormInfo,
+        // electricityFormInfo,
+      })
+    );
+  }, [
+    electricityFormInfo,
+    // electricityFormInfo,
+    // electricityFormInfo,
+    // electricityFormInfo,
+    // electricityFormInfo,
+  ]);
+
+  //my stuff is up
+
   const [count, setCount] = useState(
     JSON.parse(localStorage.getItem("waste-app-count")) || { value: 44444 }
   );
-  const [lemons, setLemons] = useState(
-    JSON.parse(localStorage.getItem("waste-app-lemons")) || { value: 44444 }
-  );
-  const [results, setResults] = useState(
-    JSON.parse(localStorage.getItem("waste-app-results")) || { value: 44444 }
-  );
 
-  useEffect(() => {
-    localStorage.setItem(`waste-app-count`, JSON.stringify(count));
-  }, [count]);
+  // useEffect(() => {
+  //   localStorage.setItem(`waste-app-count`, JSON.stringify(count));
+  // }, [count]);
 
-  useEffect(() => {
-    localStorage.setItem(`waste-app-lemons`, JSON.stringify(lemons));
-  }, [lemons]);
-
-  useEffect(() => {
-    localStorage.setItem(`waste-app-results`, JSON.stringify(results));
-  }, [results]);
-
-  const calcLemons = () => {
-    return Math.random();
+  const persistToLS = (key, value) => {
+    localStorage.setItem(key, JSON.stringify(value));
   };
   return (
     <CalcContext.Provider
       value={{
-        count,
-        setCount,
-        lemons,
-        setLemons,
-        calcLemons,
-        results,
-        setResults,
+        electricityFormInfo,
+        setElectricityFormInfo,
+        persistToLS,
       }}
     >
       {children}
